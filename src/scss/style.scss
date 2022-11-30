@@ -1,0 +1,57 @@
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+
+body {
+  font-family: 'Inter', sans-serif;
+  }
+
+$body-bg: rgb(236, 236, 236);
+$body-color: rgb(30, 30, 30);
+$header: rgb(135, 111, 95);
+$primary: rgb(135, 111, 95);
+$secondary: rgb(225, 92, 86);
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 2em 0;
+}
+
+.box img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+p.logo {
+  font-family: 'Staatliches', cursive;
+}
+
+h1, h2, h3 {
+  font-family: 'DM Serif Display', serif;
+}
+
+.dropdown-toggle::after {
+  margin-top: 10px;
+}
+
+
+@media (min-width: 576px){
+  .box {
+    height: 50%;
+    margin: 0;
+    padding: 0;
+}
+ }
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+
+@import"../../node_modules/bootstrap/scss/bootstrap";
