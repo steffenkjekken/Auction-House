@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction House</title>
+    <link rel="stylesheet" href="../dist/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="./src/js/login.js" defer></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600&family=Staatliches&display=swap" rel="stylesheet">
+</head>
+<body class="min-vh-100 d-flex flex-column">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary" aria-label="Third navbar example">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><p class="logo display-6 nopadding">Auction House</p></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav me-3 mb-2 mb-sm-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="listings.html">All listings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item bg-white d-block p-2 rounded d-sm-none">
+                <div class="container d-flex flex-row nopadding">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="42" height="42" class="rounded-circle m-2"><p class="h5 my-3 align-content-center">Steffen</p>
+                    <div class="mx-auto my-3 mytokens">token</div>
+                </div>
+                <ul class="list-group list-group-flush pt-2">
+                    <a class="list-group-item" href="#">Action</a>
+                    <a class="list-group-item" href="#">Profile</a>
+                    <a class="list-group-item" href="#">Action</a>
+                </ul>
+              </li>
+            </ul>
+            <div class="ms-auto">
+                <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                  Login
+                </button>
+                <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#registerModal">
+                  Create Profile
+                </button>
+              </div>
+            <div class="dropdown ms-auto px-5 d-none d-sm-flex flex-row">
+                <a href="#" class="d-block link-dark text-decoration-none mx-2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <div class="dropdown ms-auto d-none d-sm-flex flex-row dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <p class="h6 p-1 text-white"> Steffen </p>
+                  </div>
+                <ul class="dropdown-menu text-small">
+                  <li><a class="dropdown-item" href="#">New project...</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li class="dropdown">
+                    <button type="button" class="btn btn-outline-warning me-2 mx-2">
+                    Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <div class="container">
+            <div class="container pt-4" style="max-width: 970px;">
+                <div class="row nopadding">
+                  <div class="col-sm-6 rounded col-lg-3 col-12 bg-secondary nopadding h-100">
+                    <div class="col">
+                        <h1 class="my-2 px-2 text-white">Auction House</h1>
+                        <p class="my-4 px-2 text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo fugit, magnam delectus blanditiis nihil alias eveniet quaerat error, nam rerum commod dolor sit amet cons Amet id esse quod
+                        </p>
+                    </div>
+                    <div class="row nopadding w-100">
+                      <div class="col-12 col-lg-6 d-flex justify-content-center pt-4 bg-danger">
+                          <p class="logo display-6 text-white">BUY</p>
+                      </div>
+                      <div class="col-12 col-lg-6 rounded d-flex justify-content-center pt-4 bg-primary">
+                          <p class="logo display-6 text-white">SELL</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 px-0 d-none d-lg-block">
+                    <div class="col box product-hl-1">
+                        <img src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg">
+                    </div>
+                    <div class="col box product-hl-2">
+                        <img src="https://ps.w.org/kama-thumbnail/assets/icon-256x256.png?rev=1627018" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-lg-3 col-12 px-0">
+                    <div class="col box">
+                        <div class="container p-2">
+                            <h2>Looking for anything specific ?</h2>
+                            <p>Search on all our listings here</p>
+                        </div>  
+                    </div>
+                    <div class="col box bg-primary product-hl-3">
+                        <img src="https://ps.w.org/kama-thumbnail/assets/icon-256x256.png?rev=1627018" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-3 px-0 d-none d-lg-block">
+                    <div class="col box bg-primary product-hl-4">
+                        <img src="https://ps.w.org/kama-thumbnail/assets/icon-256x256.png?rev=1627018" class="img-fluid">
+                    </div>
+                    <div class="col box">
+                        <div class="container p-2">
+                            <h2>Looking for anything specific ?</h2>
+                            <p>Search on all our listings here</p>
+                        </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <section style="background-color: #eee;">
+                <div class="container py-5">
+                  <div class="row p-0 m-0">
+                    <div class="col-md-12 col-lg-3 mb-4 pb-5 mb-lg-0">
+                      <h2>Hot New listings</h2>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 col-lg-3 mb-4 mb-lg-0">
+                      <div class="card">
+                        <div class="d-flex justify-content-between p-3">
+                          <p class="lead mb-0">Today's Combo Offer</p>
+                          <div
+                            class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                            style="width: 35px; height: 35px;">
+                            <p class="text-white mb-0 small">x4</p>
+                          </div>
+                        </div>
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp"
+                          class="card-img-top" alt="Laptop" />
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between">
+                            <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                            <p class="small text-danger"><s>$1099</s></p>
+                          </div>
+              
+                          <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">HP Notebook</h5>
+                            <h5 class="text-dark mb-0">$999</h5>
+                          </div>
+              
+                          <div class="d-flex justify-content-between mb-2">
+                            <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p>
+                            <div class="ms-auto text-warning">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-4 mb-md-0">
+                      <div class="card">
+                        <div class="d-flex justify-content-between p-3">
+                          <p class="lead mb-0">Today's Combo Offer</p>
+                          <div
+                            class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                            style="width: 35px; height: 35px;">
+                            <p class="text-white mb-0 small">x2</p>
+                          </div>
+                        </div>
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/7.webp"
+                          class="card-img-top" alt="Laptop" />
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between">
+                            <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                            <p class="small text-danger"><s>$1199</s></p>
+                          </div>
+              
+                          <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">HP Envy</h5>
+                            <h5 class="text-dark mb-0">$1099</h5>
+                          </div>
+              
+                          <div class="d-flex justify-content-between mb-2">
+                            <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
+                            <div class="ms-auto text-warning">
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="far fa-star"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-4 mb-md-0">
+                      <div class="card">
+                        <div class="d-flex justify-content-between p-3">
+                          <p class="lead mb-0">Today's Combo Offer</p>
+                          <div
+                            class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                            style="width: 35px; height: 35px;">
+                            <p class="text-white mb-0 small">x3</p>
+                          </div>
+                        </div>
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/5.webp"
+                          class="card-img-top" alt="Gaming Laptop" />
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between">
+                            <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                            <p class="small text-danger"><s>$1399</s></p>
+                          </div>
+              
+                          <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">Toshiba B77</h5>
+                            <h5 class="text-dark mb-0">$1299</h5>
+                          </div>
+              
+                          <div class="d-flex justify-content-between mb-2">
+                            <p class="text-muted mb-0">Available: <span class="fw-bold">5</span></p>
+                            <div class="ms-auto text-warning">
+                              <i class="fa fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star-half-alt"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-4 mb-md-0">
+                      <div class="card">
+                        <div class="d-flex justify-content-between p-3">
+                          <p class="lead mb-0">Today's Combo Offer</p>
+                          <div
+                            class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                            style="width: 35px; height: 35px;">
+                            <p class="text-white mb-0 small">x3</p>
+                          </div>
+                        </div>
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/5.webp"
+                          class="card-img-top" alt="Gaming Laptop" />
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between">
+                            <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                            <p class="small text-danger"><s>$1399</s></p>
+                          </div>
+              
+                          <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">Toshiba B77</h5>
+                            <h5 class="text-dark mb-0">$1299</h5>
+                          </div>
+              
+                          <div class="d-flex justify-content-between mb-2">
+                            <p class="text-muted mb-0">Available: <span class="fw-bold">5</span></p>
+                            <div class="ms-auto text-warning">
+                              <i class="fa fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star-half-alt"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+        </div>
+      </main>
+      <footer class="bg-primary bottom-0 py-3">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col">© 2022 Auction House All Rights Reserved</div>
+            <div class="col-auto">
+              <div class="d-flex flex-column align-items-end">
+                <a href="#" class="text-white text-decoration-none">Privacy</a>
+                <a href="#" class="text-white text-decoration-none">Terms Of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog modal-dialog-centered">
+        <form class="modal-content" id="loginForm">
+          <div class="modal-header">
+            <h3 class="modal-title" id="loginModalLabel">Login</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body"> 
+            <div class="form-floating mb-3">
+              <input required type="email" class="form-control" id="loginEmail" name="email" placeholder="name@example.com"/>
+              <label for="loginEmail">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input required type="password" class="form-control" id="loginPassword" name="password" placeholder="Password"/>
+              <label for="loginPassword">Password</label>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#registerModal">
+              Register
+            </button>
+            <button type="submit" class="btn btn-success" id="login">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <form class="modal-content" id="registerForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registerModalLabel">Create Profile</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <input required type="text" class="form-control" id="Name" name="name" placeholder="name@example.com"/>
+              <label for="registerName">Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input required type="email" class="form-control" id="regEmail" name="email" placeholder="name@example.com"
+              />
+              <label for="registerEmail">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input required type="password" minlength="8" class="form-control" id="regPassword" name="password" placeholder="Password"/>
+              <label for="registerPassword">Password</label>
+            </div>
+            <div class="form-floating">
+              <input required type="url" class="form-control" id="Avatar" name="avatar" placeholder="Avatar URL"/>
+              <label for="registerAvatar">Avatar URL</label>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">
+              Login
+            </button>
+            <button type="submit" class="btn btn-success" id="register">
+              Create Profile
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+</body>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+</html>
