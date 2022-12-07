@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600&family=Staatliches&display=swap" rel="stylesheet">
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
-<body class="min-vh-100 d-flex flex-column">
+<body class="min-vh-100 d-flex flex-column logged-in">
     <header class="p-3 mb-3 border-bottom bg-primary">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -23,36 +23,6 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 px-5 justify-content-center mb-md-0">
               <li><a href="#" class="nav-link px-2 link-light">All listings</a></li>
             </ul>
-            <div class="text-end">
-              <button
-                type="button"
-                class="btn btn-outline-warning me-2"
-                data-auth="logout"
-                data-visible="loggedIn"
-              >
-                Logout
-              </button>
-              <button
-                type="button"
-                class="btn btn-outline-success me-2"
-                data-bs-toggle="modal"
-                data-bs-target="#loginModal"
-                data-auth="login"
-                data-visible="loggedOut"
-              >
-                Login
-              </button>
-              <button
-                type="button"
-                class="btn btn-success"
-                data-bs-toggle="modal"
-                data-bs-target="#registerModal"
-                data-auth="register"
-                data-visible="loggedOut"
-              >
-                Create Profile
-              </button>
-            </div>
             <div class="dropdown text-end">
               <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
