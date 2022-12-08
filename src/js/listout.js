@@ -3,13 +3,6 @@ const limit = "12";
 
 const outDiv = document.querySelector("div#container")
 
-var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-var dateTime = date+' '+time;
-
-console.log(dateTime)
-
 const listPosts = (items) => {
     //console.log (items);
     outDiv.innerHTML = "";
@@ -30,7 +23,7 @@ const listPosts = (items) => {
          });
 
         var lastBid = bid[bid.length - 1];
-        console.log(lastBid);
+        //console.log(lastBid);
 
         if (lastBid == null) {
             lastBid = "No bids yet";
@@ -64,7 +57,6 @@ const listPosts = (items) => {
     outDiv.innerHTML = newDivs;
 
 };
-
 
 let allItems = [];
 

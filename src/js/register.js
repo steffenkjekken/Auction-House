@@ -3,8 +3,6 @@ const emailInput = document.querySelector("input#registerEmail");
 const passwordInput = document.querySelector("input#registerPassword");
 const avatarInput = document.querySelector("input#registerAvatar");
 
-const registerButton = document.querySelector("button#register");
-
 export async function register (url, data) {
     try {
         const options = {
@@ -24,7 +22,19 @@ export async function register (url, data) {
         if (response.ok){
             localStorage.setItem('username', answer.name);
             localStorage.setItem('accessToken', answer.accessToken);
-            location.reload()
+            modal.style.display ="block";
+            function Timer() {
+                var counter = 5;
+                var myTimer = setInterval(function() {
+                  document.getElementById("modal-time").innerHTML = counter;
+                  counter--;
+                  if (counter < 0) {
+                    clearInterval(myTimer);
+                    location.reload();
+                  }
+                }, 1000);
+              }
+              Timer();
         }
 
         else if (!answer.ok) {

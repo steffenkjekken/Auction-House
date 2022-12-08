@@ -1,4 +1,5 @@
 export async function login (url, data) {
+    let modalLogin = document.querySelector("#loginModal");
     try {
         const options = {
             method: 'POST', 
@@ -18,6 +19,7 @@ export async function login (url, data) {
             localStorage.setItem('username', answer.name);
             localStorage.setItem('accessToken', answer.accessToken);
             document.body.classList.add("logged-in")
+            location.reload(); 
         }
 
         else if (!answer.ok) {

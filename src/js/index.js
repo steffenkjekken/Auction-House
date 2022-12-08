@@ -1,8 +1,10 @@
 import { login } from "./login.js";
 import { register } from "./register.js";
 import { getPosts } from "./listout.js";
+import { getProfile } from "./profileinfo.js";
 
 const BASE_URL = "https://api.noroff.dev/api/v1/auction/"
+
 
 const nameInput = document.querySelector("input#Name");
 const emailInput = document.querySelector("input#loginEmail");
@@ -51,3 +53,4 @@ document.body.addEventListener("click", (event) => {
 });
 
 getPosts();
+getProfile();
