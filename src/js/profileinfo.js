@@ -3,6 +3,10 @@ let userName = document.getElementById("username");
 let avatar = document.getElementById("avatar");
 let dropdownMenu = document.getElementById("profilemenu")
 
+const profileURL = `https://api.noroff.dev/api/v1/auction/profiles/${user}?_listings=true`;
+
+const auth = localStorage.getItem("accessToken");
+
 export async function getProfile (url) {
     if (auth != null) {
     try {
@@ -47,8 +51,4 @@ export async function getProfile (url) {
     }
 }
 };
-
-const userURL = `https://api.noroff.dev/api/v1/auction/profiles/${user}?_listings=true`;
-
-
-getProfile(userURL);
+getProfile(profileURL);

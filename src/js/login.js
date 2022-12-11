@@ -18,8 +18,8 @@ export async function login (url, data) {
         if (response.ok){
             localStorage.setItem('username', answer.name);
             localStorage.setItem('accessToken', answer.accessToken);
-            document.body.classList.add("logged-in")
-            location.reload(); 
+            document.body.classList.add("logged-in");
+            window.location.reload();
         }
 
         else if (!answer.ok) {

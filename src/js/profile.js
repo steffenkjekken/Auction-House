@@ -1,14 +1,18 @@
 let profilecard = document.getElementById("profileCard");
 let userName = document.getElementById("username");
 let avatar = document.getElementById("avatar");
-let dropdownMenu = document.getElementById("profilemenu")
+let dropdownMenu = document.getElementById("profilemenu");
+let appendDiv = document.getElementById("appendListings");
+let avatarInput = document.getElementById("avatarInput");
 
 profilecard.innerHTML = "";
 let userInfo = "";
+let userListings = "";
 
 
 const user = localStorage.getItem('username');
 const userURL = `https://api.noroff.dev/api/v1/auction/profiles/${user}?_listings=true`;
+const avatarURL = `https://api.noroff.dev/api/v1/auction/profiles/${user}/media`
 
 async function getProfile (url) {
     if (auth != null) {
@@ -25,9 +29,9 @@ async function getProfile (url) {
         //console.log(url, options);
 
         const response = await fetch(url, options); 
-        console.log(response);
+        //console.log(response);
         const profile = await response.json()
-        console.log(profile);
+        //console.log(profile);
 
         userName.innerHTML = user;
 
@@ -57,7 +61,7 @@ async function getProfile (url) {
 getProfile(userURL);
 
 const listinfo = (profile) => {
-    console.log (profile);
+    //console.log (profile);
 
     avatar.src = profile.avatar
         if(profile.avatar == ""){
@@ -70,8 +74,7 @@ const listinfo = (profile) => {
             <h4>${profile.name}</h4>
             <p class="text-secondary mb-1">Number of auctions Won: ${profile.wins}</p>
             <p class="text-muted font-size-sm">Number of listings: ${profile.listings}</p>
-            <button class="btn btn-primary">Follow</button>
-            <button class="btn btn-outline-primary">Message</button>
+            <button class="btn btn-primary" id="updateAvatar" data-bs-toggle="modal" data-bs-target="#avatarModal">Update Avatar</button>
         </div>
         </div>
         <hr class="my-4">
@@ -85,8 +88,60 @@ const listinfo = (profile) => {
             <span class="text-secondary">${profile.listings}</span>
         </li>
     </ul>`
-    console.log(userInfo);
+
     profilecard.innerHTML = userInfo;
+
+    userListings += `<div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="d-flex align-items-center mb-3">${profile.listing}</h5>
+                                <p>Web Design</p>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+    
+    appendDiv.insertAdjacentHTML("afterend", userListings);
 
 };
 
+async function updateAvatar (url, data) {
+    try {
+        const accessToken = localStorage.getItem('accessToken'); 
+        //console.log(accessToken)
+        const response = await fetch(avatarURL, {
+            method: "put",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+               Authorization: `Bearer ${accessToken}`,
+           },
+          })
+        
+          if (response.ok) {
+            return await response.json()
+          }
+
+    } 
+    catch(error) {
+        console.warn(error);
+    }
+};
+
+document.body.addEventListener("click", (event) => {
+    if
+    (event.target.id == 'submitAvatar'){
+        event.preventDefault()
+
+        const avatar = avatarInput.value.trim();
+        const avatarData = {
+            avatar
+        }
+        updateAvatar(avatarURL, avatarData)
+        setTimeout(function(){
+            window.location.reload();
+         }, 1500);
+        
+    }});

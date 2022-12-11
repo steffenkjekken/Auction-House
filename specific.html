@@ -14,7 +14,7 @@
 <body class="min-vh-100 d-flex flex-column">
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary" aria-label="Third navbar example">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><p class="logo display-6 nopadding">Auction House</p></a>
+          <a class="navbar-brand" href="index.html"><p class="logo display-6 nopadding">Auction House</p></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -22,10 +22,7 @@
           <div class="collapse navbar-collapse" id="navbarsExample03">
             <ul class="navbar-nav me-3 mb-2 mb-sm-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">All listings</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link active" aria-current="page" href="listings.html">All listings</a>
               </li>
               <li class="nav-item bg-white d-block p-2 rounded d-sm-none">
                 <div class="container d-flex flex-row nopadding">
@@ -34,24 +31,36 @@
                 </div>
                 <ul class="list-group list-group-flush pt-2">
                     <a class="list-group-item" href="#">Action</a>
-                    <a class="list-group-item" href="#">Profile</a>
+                    <a class="list-group-item" href="profile.html">Profile</a>
                     <a class="list-group-item" href="#">Action</a>
                 </ul>
               </li>
             </ul>
-            <div class="dropdown ms-auto px-5 d-none d-sm-flex flex-row">
+            <div class="ms-auto" data-visible="loggedOut">
+                <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                  Login
+                </button>
+                <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#registerModal">
+                  Create Profile 
+                </button>
+              </div>
+            <div class="dropdown ms-auto px-5 d-none d-sm-flex flex-row" data-visible="loggedIn">
                 <a href="#" class="d-block link-dark text-decoration-none mx-2" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                  <img src="" alt="mdo" width="32" height="32" class="rounded-circle" id="avatar">
                 </a>
                 <div class="dropdown ms-auto d-none d-sm-flex flex-row dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <p class="h6 p-1 text-white"> Steffen </p>
+                    <p class="h5 p-1 text-white user-select-none" id="username"> ... </p>
                   </div>
-                <ul class="dropdown-menu text-small">
+                <ul class="dropdown-menu text-small" id="profilemenu">
                   <li><a class="dropdown-item" href="#">New project...</a></li>
                   <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="profile.html">Profile</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
+                  <li class="dropdown">
+                    <button type="button" class="btn btn-outline-warning me-2 mx-2" id="logout">
+                    Logout
+                    </button>
+                  </li>
                 </ul>
               </div>
           </div>

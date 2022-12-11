@@ -17,7 +17,7 @@
 <body class="min-vh-100 d-flex flex-column">
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary" aria-label="Third navbar example">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><p class="logo display-6 nopadding">Auction House</p></a>
+          <a class="navbar-brand" href="index.html"><p class="logo display-6 nopadding">Auction House</p></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="row">
-                                        <div class="col-sm-12 pb-2">
+                                        <div class="col-sm-12 pb-2" id="appendListings">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <h5 class="d-flex align-items-center mb-3">Project Status</h5>
@@ -133,7 +133,6 @@
                             </div>
                         </div>
                     </div>
-                  
                 </div>
               </section>
         </div>
@@ -151,7 +150,27 @@
           </div>
         </div>
       </footer>
-    
+      <div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <form class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel">Update Avatar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-time">
+              <div class="form-floating">
+                <input required type="url" class="form-control" id="avatarInput" name="avatar" placeholder="Avatar URL"/>
+                <label for="registerAvatar">Avatar URL</label>
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary text-light" id="submitAvatar" data-bs-toggle="modal" data-bs-target="#avatarModal">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
 </body>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
 </html>

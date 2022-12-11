@@ -1,7 +1,16 @@
-const listOutURL = "https://api.noroff.dev/api/v1/auction/listings";
+const listOutURL = "https://api.noroff.dev/api/v1/auction/listings?limit=12?&_seller=true&_bids=true&sort=created&sortOrder=desc";
+const heroURL = "https://api.noroff.dev/api/v1/auction/listings?limit=4?&_seller=true&_bids=true?&sort=created&sortOrder=desc"
 const limit = "12";
 
 const outDiv = document.querySelector("div#container")
+const heroImgs = document.querySelectorAll("img.product");
+
+const listImg = (items) => {
+    for (let img of items) {
+        console.log(img.media)
+        heroImgs.src.append(img.media)
+    }
+}
 
 const listPosts = (items) => {
     //console.log (items);
@@ -38,16 +47,19 @@ const listPosts = (items) => {
           <img src="${item.media}"
             class="card-img-top ratio-1x1" alt="${item.title}" />
           <div class="card-body">
-            <div class="d-flex justify-content-between mb-5">
+            <div class="d-flex flex-column mb-3">
               <h5 class="mb-0">${item.title}</h5>
-              <h5 class="text-dark mb-0">Bids: ${lastBid}</h5>
+              <h6 class="text-dark mb-0">Price: ${lastBid}</h5>
             </div>
-            <div class="d-flex flex-column mb-2">
-            <h5 class="text-dark mb-0">Bids: ${item._count.bids}</h5>
+            <div class="input-group mb-3" data-visible="loggedIn">
+            <input type="text" class="form-control" placeholder="Place your bid" aria-label="Place your bid" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">Bid</button>
+            </div>
+            </div>
+            <div class="d-flex align-content-end flex-column mb-1">
+              <p class="text-dark mb-0">Bids: ${item._count.bids}</p>
               <p class="text-muted mb-0">Available: <span class="fw-bold">${formatedDate}</span></p>
-              <div class="ms-auto text-warning">
-                <i class="fa fa-star"></i>
-              </div>
             </div>
           </div>
         </div>
@@ -79,11 +91,12 @@ export async function getPosts (url) {
         console.log(items);
         allItems = items;
         listPosts(items, outDiv)
+        listImg(items)
 
     } catch(error) {
         console.warn(error);
     }
 };
 
-getPosts(listOutURL + "?limit=" + limit +"?&_seller=true&_bids=true");
+getPosts(listOutURL);
 listPosts(allItems)
