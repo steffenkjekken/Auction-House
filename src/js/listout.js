@@ -1,6 +1,5 @@
 const listOutURL = "https://api.noroff.dev/api/v1/auction/listings?limit=12?&_seller=true&_bids=true&sort=created&sortOrder=desc";
 const heroURL = "https://api.noroff.dev/api/v1/auction/listings?limit=4?&_seller=true&_bids=true?&sort=created&sortOrder=desc"
-const limit = "12";
 
 const outDiv = document.querySelector("div#container")
 const heroImgs = document.querySelectorAll("img.product");
@@ -51,10 +50,12 @@ const listPosts = (items) => {
               <h5 class="mb-0">${item.title}</h5>
               <h6 class="text-dark mb-0">Price: ${lastBid}</h5>
             </div>
-            <div class="input-group mb-3" data-visible="loggedIn">
-            <input type="text" class="form-control" placeholder="Place your bid" aria-label="Place your bid" aria-describedby="basic-addon2">
+            <div class="input-group mb-3 d-flex justify-content-between" data-visible="loggedIn">
+            <div class="col-6">
+            <input type="text" class="form-control col-2" id="${item.id}" placeholder="Place your bid" aria-label="Place your bid" aria-describedby="basic-addon2">
+            </div>
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Bid</button>
+                <button class="btn bid btn-secondary text-light" id="${item.id}" type="button">Bid</button>
             </div>
             </div>
             <div class="d-flex align-content-end flex-column mb-1">
