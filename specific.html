@@ -21,78 +21,79 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600&family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <body class="min-vh-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary" aria-label="Third navbar example">
-        <div class="container">
-          <a class="navbar-brand" href="index.html"><p class="logo display-6 nopadding">Auction House</p></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary" aria-label="Third navbar example">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><p class="logo display-6 nopadding">Auction House</p></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="d-none d-md-flex navbar-nav me-3 mb-2 px-2 mb-sm-0">
+          <li class="nav-item">
+            <a class="nav-link active d-none d-md-block" aria-current="page" href="listings.html">All listings</a>
+          </li>
+          <li class="nav-item" data-visible="loggedIn">
+            <a class="nav-link active" aria-current="page" href="listitem.html">Sell</a>
+          </li>
+        </ul>
+        <div class="ms-auto d-flex flex-column flex-md-row py-2" data-visible="loggedOut">
+          <a class="btn btn-outline-light my-1 me-2 d-md-none" aria-current="page" href="listings.html">All listings</a>
+          <button type="button" class="btn btn-outline-light my-1 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Login
           </button>
-    
-          <div class="collapse navbar-collapse" id="navbarsExample03">
-            <ul class="d-none d-sm-flex navbar-nav me-3 mb-2 px-2 mb-sm-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="listings.html">All listings</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="listitem.html">Sell</a>
+          <button type="button" class="btn btn-outline-light my-1 me-2" data-bs-toggle="modal" data-bs-target="#registerModal">
+            Create Profile 
+          </button>
+        </div>
+          <div class="d-sm-none py-3 px-3 flex-column" data-visible="loggedIn">
+            <ul class="navbar-nav" id="profilemenuMobile">
+              <li class="nav-item bg-white rounded d-block d-md-none">
+                <div class="container rounded-top py-3 d-flex bg-secondary flex-row justify-content-around">
+                  <div class="d-flex flex-row">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="42" height="42" class="rounded-circle ml-5" id="avatarMobile">
+                    <p class="h4 mt-2 mx-2 text-light user-select-none" id="usernameMobile"> ... </p>
+                  </div>
+                  <div class="mytokens">
+                    <button type="button" id="tokens" class="btn btn-light pe-none text-secondary">
+          
+                    </button>
+                  </div>
+                </div>
+                <ul class="list-group list-group-flush my-1 pt-1 text-center">
+                    <a class="list-group-item my-2" href="profile.html">Profile</a>
+                    <a class="list-group-item my-2" href="listings.html">All listings</a>
+                    <a class="list-group-item my-2" href="listitem.html">Sell</a>
+                </ul>
+                <button type="button" class="btn btn-warning py-2 rounded-bottom text-black col-12" id="logoutMobile">
+                  Logout
+                  </button>
               </li>
             </ul>
-            <div class="ms-auto" data-visible="loggedOut">
-                <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
-                  Login
-                </button>
-                <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#registerModal">
-                  Create Profile 
-                </button>
-              </div>
-              <div class="d-sm-none py-3 px-3">
-                <ul class="navbar-nav" id="profilemenuMobile">
-                  <li class="nav-item bg-white rounded d-block d-sm-none">
-                    <div class="container rounded-top py-3 d-flex bg-secondary flex-row justify-content-around">
-                      <div class="d-flex flex-row">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="42" height="42" class="rounded-circle ml-5" id="avatarMobile">
-                        <p class="h4 mt-2 mx-2 text-light user-select-none" id="usernameMobile"> ... </p>
-                      </div>
-                      <div class="mytokens">
-                        <button type="button" id="tokens" class="btn btn-light pe-none text-secondary">
-              
-                        </button>
-                      </div>
-                    </div>
-                    <ul class="list-group list-group-flush my-1 pt-1 text-center">
-                        <a class="list-group-item my-2" href="profile.html">Profile</a>
-                        <a class="list-group-item my-2" href="listings.html">All listings</a>
-                        <a class="list-group-item my-2" href="listitem.html">Sell</a>
-                    </ul>
-                    <button type="button" class="btn btn-warning py-2 rounded-bottom text-black col-12" id="logout">
-                      Logout
-                      </button>
-                  </li>
-                </ul>
-              </div>
-            <div class="dropdown ms-auto mr-5 d-none d-sm-flex flex-row" data-visible="loggedIn">
-              <div class ="d-none d-sm-flex">
-                <div class="btn btn-primary rounded border border-info d-flex flex-row py-0 px-2" data-bs-toggle="dropdown" aria-expanded="false">
-                  <a href="#" class="d-block link-dark text-decoration-none p-1">
-                    <img src="" alt="mdo" width="32" height="32" class="rounded-circle my-2" id="avatar">
-                  </a>
-                      <p class="h5 mt-3 text-white user-select-none" id="username"> ... </p>
-                      <i class="bi text-dark mt-2 pr-3 p-2 bi-chevron-down h5"></i>
-                </div>
-                <ul class="dropdown-menu dropdown-menu-end" id="profilemenu">
-                  <li><a class="dropdown-item text-center" href="profile.html">Profile</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li class="dropdown text-end">
-                    <button type="button" class="btn btn-outline-warning me-2 mx-2" id="logout">
-                    Logout
-                    </button>
-                  </li>
-                </ul>
-              </div>
+          </div>
+        <div class="dropdown ms-auto mr-5 d-none d-sm-flex flex-row" data-visible="loggedIn">
+          <div class ="d-none d-md-flex">
+            <div class="btn btn-primary rounded border border-info d-flex flex-row py-0 px-2" data-bs-toggle="dropdown" aria-expanded="false">
+              <a href="#" class="d-block link-dark text-decoration-none p-1">
+                <img src="" alt="" width="32" height="32" class="rounded-circle my-2" id="avatar">
+              </a>
+                  <p class="h5 mt-3 text-white user-select-none" id="username"></p>
+                  <i class="bi text-dark mt-2 pr-3 p-2 bi-chevron-down h5"></i>
             </div>
+            <ul class="dropdown-menu dropdown-menu-end" id="profilemenu">
+              <li><a class="dropdown-item text-center" href="profile.html">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li class="dropdown text-end">
+                <button type="button" class="btn btn-warning me-2 mx-2" id="logout">
+                Logout
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
-      </nav>
+      </div>
+    </div>
+  </nav>
     <main>
         <section style="background-color: #eee;">
             <div class="container bg-light rounded outDiv my-4 py-2">

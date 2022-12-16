@@ -127,7 +127,7 @@ const listItem = (item) => {
             </div>
             <p class="small">Listing ends at: ${formatedDate}</p>
             <div class="accordion-item col-12 col-md-6 py-2">
-                <button class="btn btn-outline-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn btn-outline-primary col-12 viewBids" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 View bids
                 </button>
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionhExample">
@@ -151,6 +151,14 @@ const listItem = (item) => {
     //console.log(newDivs);
     outDiv.innerHTML = newDivs;
 
+    let viewBidsBtn = document.querySelector("button.viewBids")
+
+    if (item.bids == 0){
+        viewBidsBtn.innerText = "No bids to show"
+        viewBidsBtn.setAttribute("disabled", "")
+    }
+
+
     const deleteBtn = document.querySelectorAll("button#deleteEntry")
 
 deleteBtn.forEach(btn => {
@@ -163,9 +171,6 @@ deleteBtn.forEach(btn => {
     })
 });
 };
-
-
-
 
 async function deletePosts (url) {
     try {
