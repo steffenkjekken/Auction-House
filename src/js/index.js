@@ -13,6 +13,8 @@ const regPasswordInput = document.querySelector("input#regPassword");
 const avatarInput = document.querySelector("input#Avatar");
 const feedbackModal = document.getElementById("regBody");
 
+const regBTN = document.getElementById("register");
+
 const nameAlert = document.querySelector("#nameHelp")
 const passwordAlert = document.querySelector("#passwordHelp")
 const emailAlert = document.querySelector("#emailHelp")
@@ -24,6 +26,7 @@ const regEmailAlert = document.querySelector("#regEmailHelp")
 console.log(emailAlert);
 
 let validated = false;
+let regValidatet = false
 
 
 let successReg = `<div class="modal-content">
@@ -42,10 +45,8 @@ let successReg = `<div class="modal-content">
 </div>`
 
 
-document.body.addEventListener("click", (event) => {
-    if
-    (event.target.id == 'register'){
-
+regBTN.addEventListener("click", (event) => {
+  
     event.preventDefault();
     console.log("You've pressed submit...");
     const name = nameInput.value.trim();
@@ -66,13 +67,13 @@ document.body.addEventListener("click", (event) => {
     validateRegPassword(password);
     validateAvatar(avatar);
 
-    console.log(validated)
+    console.log(regValidatet)
 
-    if (validated == true){
+    if (regValidatet === true){
       register(BASE_URL+"auth/register", regData);
       }
     }
-  });
+);
 
 document.body.addEventListener("click", (event) => {
     if
@@ -92,7 +93,7 @@ document.body.addEventListener("click", (event) => {
 
     console.log(validated)
 
-    if (validated == true){
+    if (validated){
     login(BASE_URL+"auth/login", loginData)
     }
     }
@@ -103,14 +104,17 @@ getProfile();
 function validateName(name) {
   if ( name.match(/^[a-zA-Z0-9_]+$/)) {
           nameAlert.innerHTML = "";
-          validated = true
+          validated = true;
+          regValidatet = true;
       } else {
           nameAlert.innerHTML = "<p>The name value must not contain punctuation symbols apart from underscore (_).</p>";
-          validated = false
+          validated = false;
+          regValidatet = false;
       }
       if (!name) { 
           nameAlert.innerHTML = "<p>Name missing</p>";
           validated = false;
+          regValidatet = false;
   }
   console.log(validated)
 }
@@ -118,10 +122,10 @@ function validateName(name) {
 function validateEmail(email) {
   if (email.match(/[\w\-.]+@(stud.)?noroff.no$/)) {
       emailAlert.innerHTML = "";
-      validated = true
+      validated = true;
       } else {
       emailAlert.innerHTML = "<p>You need a noroff email to login</p>";
-      validated = false
+      validated = false;
       }
       if (!email) { 
       emailAlert.innerHTML = "<p>Email missing</p>";
@@ -133,14 +137,14 @@ function validateEmail(email) {
 function validateRegEmail(regEmail) {
   if (regEmail.match(/[\w\-.]+@(stud.)?noroff.no$/)) {
       regEmailAlert.innerHTML = "";
-      validated = true
+      regValidatet = true;
       } else {
       regEmailAlert.innerHTML = "<p>You need a noroff email to register</p>";
-      validated = false
+      regValidatet = false;
       }
       if (!regEmail) { 
       regEmailAlert.innerHTML = "<p>Email missing</p>";
-      validated = false;
+      regValidatet = false;
   }
   console.log(validated)
 }
@@ -148,10 +152,10 @@ function validateRegEmail(regEmail) {
 function validatePassword(password) {
   if ( password.match(/[a-zA-Z0-9]{8,}/) ) {
       passwordAlert.innerHTML = "";
-      validated = true
+      validated = true;
       } else {
       passwordAlert.innerHTML = "<p>The password value must be at least 8 characters.</p>";
-      validated = false
+      validated = false;
       }
       if (!password) { 
       passwordAlert.innerHTML = "<p>Password missing</p>";
@@ -162,28 +166,29 @@ function validatePassword(password) {
 function validateRegPassword(password) {
   if ( password.match(/[a-zA-Z0-9]{8,}/) ) {
       regPasswordAlert.innerHTML = "";
-      validated = true
+      regValidatet = true;
       } else {
       regPasswordAlert.innerHTML = "<p>The password value must be at least 8 characters.</p>";
-      validated = false
-      }
+      regValidatet = false;
       if (!password) { 
       regPasswordAlert.innerHTML = "<p>Password missing</p>";
-      validated = false;
+      regValidatet = false;
+      }
   }
+  console.log(validated)
 }
 
 
 function validateAvatar(avatar) {
   if ( avatar.match(/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/) ) {
       avatarAlert.innerHTML = "";
-      validated = true
+      regValidatet = true;
       } else {
       avatarAlert.innerHTML = "<p>A URL with image is required</p>";
-      validated = false
+      regValidatet = false;
       }
       if (!avatar) { 
       avatarAlert.innerHTML = "";
-      validated = true;
+      regValidatet = true;
   }
 }
