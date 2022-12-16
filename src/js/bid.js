@@ -45,5 +45,6 @@ document.body.addEventListener("click", (event) => {
     }
     console.log(BID_URL);
 });
+
 //console.log(BID_URL);
 

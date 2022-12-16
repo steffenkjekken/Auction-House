@@ -12,71 +12,87 @@
 <script src="./src/js/auth.js" defer></script>
 <script src="./src/js/init.js" defer></script>
 <script src="./src/js/index.js" type="module" defer></script>
-
+<script src="./src/js/listout.js" defer></script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600&family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <body class="min-vh-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary" aria-label="Third navbar example">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary" aria-label="Third navbar example">
+        <div class="container">
           <a class="navbar-brand" href="index.html"><p class="logo display-6 nopadding">Auction House</p></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
     
           <div class="collapse navbar-collapse" id="navbarsExample03">
-            <ul class="navbar-nav me-3 mb-2 px-2 mb-sm-0">
+            <ul class="d-none d-md-flex navbar-nav me-3 mb-2 px-2 mb-sm-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="listings.html">All listings</a>
+                <a class="nav-link active d-none d-md-block" aria-current="page" href="listings.html">All listings</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" data-visible="loggedIn">
                 <a class="nav-link active" aria-current="page" href="listitem.html">Sell</a>
               </li>
-              <li class="nav-item bg-white d-block p-2 rounded d-sm-none">
-                <div class="container d-flex flex-row nopadding">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="42" height="42" class="rounded-circle m-2"><p class="h5 my-3 align-content-center">Steffen</p>
-                    <div class="mx-auto my-3 mytokens">token</div>
-                </div>
-                <ul class="list-group list-group-flush pt-2">
-                    <a class="list-group-item" href="#">Action</a>
-                    <a class="list-group-item" href="profile.html">Profile</a>
-                    <a class="list-group-item" href="#">Action</a>
-                </ul>
-              </li>
             </ul>
-            <div class="ms-auto" data-visible="loggedOut">
-                <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
-                  Login
-                </button>
-                <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#registerModal">
-                  Create Profile 
-                </button>
+            <div class="ms-auto d-flex flex-column flex-md-row py-2" data-visible="loggedOut">
+              <a class="btn btn-outline-light my-1 me-2 d-md-none" aria-current="page" href="listings.html">All listings</a>
+              <button type="button" class="btn btn-outline-light my-1 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Login
+              </button>
+              <button type="button" class="btn btn-outline-light my-1 me-2" data-bs-toggle="modal" data-bs-target="#registerModal">
+                Create Profile 
+              </button>
+            </div>
+              <div class="d-sm-none py-3 px-3 flex-column" data-visible="loggedIn">
+                <ul class="navbar-nav" id="profilemenuMobile">
+                  <li class="nav-item bg-white rounded d-block d-md-none">
+                    <div class="container rounded-top py-3 d-flex bg-secondary flex-row justify-content-around">
+                      <div class="d-flex flex-row">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="42" height="42" class="rounded-circle ml-5" id="avatarMobile">
+                        <p class="h4 mt-2 mx-2 text-light user-select-none" id="usernameMobile"> ... </p>
+                      </div>
+                      <div class="mytokens">
+                        <button type="button" id="tokens" class="btn btn-light pe-none text-secondary">
+              
+                        </button>
+                      </div>
+                    </div>
+                    <ul class="list-group list-group-flush my-1 pt-1 text-center">
+                        <a class="list-group-item my-2" href="profile.html">Profile</a>
+                        <a class="list-group-item my-2" href="listings.html">All listings</a>
+                        <a class="list-group-item my-2" href="listitem.html">Sell</a>
+                    </ul>
+                    <button type="button" class="btn btn-warning py-2 rounded-bottom text-black col-12" id="logout">
+                      Logout
+                      </button>
+                  </li>
+                </ul>
               </div>
-            <div class="dropdown ms-auto px-5 d-none d-sm-flex flex-row" data-visible="loggedIn">
-                <a href="#" class="d-block link-dark text-decoration-none mx-2" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="" alt="mdo" width="32" height="32" class="rounded-circle" id="avatar">
-                </a>
-                <div class="dropdown ms-auto d-none d-sm-flex flex-row dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <p class="h5 p-1 text-white user-select-none" id="username"> ... </p>
-                  </div>
-                <ul class="dropdown-menu text-small" id="profilemenu">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+            <div class="dropdown ms-auto mr-5 d-none d-sm-flex flex-row" data-visible="loggedIn">
+              <div class ="d-none d-md-flex">
+                <div class="btn btn-primary rounded border border-info d-flex flex-row py-0 px-2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a href="#" class="d-block link-dark text-decoration-none p-1">
+                    <img src="" alt="" width="32" height="32" class="rounded-circle my-2" id="avatar">
+                  </a>
+                      <p class="h5 mt-3 text-white user-select-none" id="username"></p>
+                      <i class="bi text-dark mt-2 pr-3 p-2 bi-chevron-down h5"></i>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end" id="profilemenu">
+                  <li><a class="dropdown-item text-center" href="profile.html">Profile</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li class="dropdown">
-                    <button type="button" class="btn btn-outline-warning me-2 mx-2" id="logout">
+                  <li class="dropdown text-end">
+                    <button type="button" class="btn btn-warning me-2 mx-2" id="logout">
                     Logout
                     </button>
                   </li>
                 </ul>
               </div>
+            </div>
           </div>
         </div>
       </nav>
       <main>
         <div class="container">
-            <div class="container pt-4" style="max-width: 970px;">
+            <div class="container pt-4">
                 <div class="row nopadding">
                   <div class="col-sm-6 rounded col-lg-3 col-12 bg-secondary nopadding h-100">
                     <div class="col">
@@ -128,123 +144,17 @@
             <section style="background-color: #eee;">
                 <div class="container py-5">
                   <div class="row p-0 m-0">
-                    <div class="col-md-12 col-lg-3 mb-4 pb-5 mb-lg-0">
-                      <h2>Hot New listings</h2>
+                    <div class="card mb-4 bg-secondary text-light">
+                      <div class="card-body">
+                        <h2>Hot New listings</h2>
+                      </div>
                     </div>
                   </div>
                   <div class="row" id="container">
-                    <div class="col-6 col-lg-3 mb-4 mb-md-0">
-                      <div class="card">
-                        <div class="d-flex justify-content-between p-3">
-                          <p class="lead mb-0">Today's Combo Offer</p>
-                          <div
-                            class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                            style="width: 35px; height: 35px;">
-                            <p class="text-white mb-0 small">x2</p>
-                          </div>
-                        </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/7.webp"
-                          class="card-img-top" alt="Laptop" />
-                        <div class="card-body">
-                          <div class="d-flex justify-content-between">
-                            <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-                            <p class="small text-danger"><s>$1199</s></p>
-                          </div>
-              
-                          <div class="d-flex justify-content-between mb-3">
-                            <h5 class="mb-0">HP Envy</h5>
-                            <h5 class="text-dark mb-0">$1099</h5>
-                          </div>
-              
-                          <div class="d-flex justify-content-between mb-2">
-                            <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
-                            <div class="ms-auto text-warning">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="far fa-star"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6 col-lg-3 mb-4 mb-md-0">
-                      <div class="card">
-                        <div class="d-flex justify-content-between p-3">
-                          <p class="lead mb-0">Today's Combo Offer</p>
-                          <div
-                            class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                            style="width: 35px; height: 35px;">
-                            <p class="text-white mb-0 small">x3</p>
-                          </div>
-                        </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/5.webp"
-                          class="card-img-top" alt="Gaming Laptop" />
-                        <div class="card-body">
-                          <div class="d-flex justify-content-between">
-                            <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-                            <p class="small text-danger"><s>$1399</s></p>
-                          </div>
-              
-                          <div class="d-flex justify-content-between mb-3">
-                            <h5 class="mb-0">Toshiba B77</h5>
-                            <h5 class="text-dark mb-0">$1299</h5>
-                          </div>
-              
-                          <div class="d-flex justify-content-between mb-2">
-                            <p class="text-muted mb-0">Available: <span class="fw-bold">5</span></p>
-                            <div class="ms-auto text-warning">
-                              <i class="fa fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star-half-alt"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6 col-lg-3 mb-4 mb-md-0">
-                      <div class="card">
-                        <div class="d-flex justify-content-between p-3">
-                          <p class="lead mb-0">Today's Combo Offer</p>
-                          <div
-                            class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                            style="width: 35px; height: 35px;">
-                            <p class="text-white mb-0 small">x3</p>
-                          </div>
-                        </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/5.webp"
-                          class="card-img-top" alt="Gaming Laptop" />
-                        <div class="card-body">
-                          <div class="d-flex justify-content-between">
-                            <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-                            <p class="small text-danger"><s>$1399</s></p>
-                          </div>
-              
-                          <div class="d-flex justify-content-between mb-3">
-                            <h5 class="mb-0">Toshiba B77</h5>
-                            <h5 class="text-dark mb-0">$1299</h5>
-                          </div>
-              
-                          <div class="d-flex justify-content-between mb-2">
-                            <p class="text-muted mb-0">Available: <span class="fw-bold">5</span></p>
-                            <div class="ms-auto text-warning">
-                              <i class="fa fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star-half-alt"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
               </section>
-        </div>
       </main>
       <footer class="bg-primary bottom-0 py-3">
         <div class="container-fluid">

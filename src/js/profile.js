@@ -4,6 +4,7 @@ let avatar = document.getElementById("avatar");
 let dropdownMenu = document.getElementById("profilemenu");
 let appendDiv = document.getElementById("appendListings");
 let avatarInput = document.getElementById("avatarInput");
+let userHeading = document.querySelector("h3.userListings")
 
 profilecard.innerHTML = "";
 let userInfo = "";
@@ -40,16 +41,6 @@ async function getProfile (url) {
            avatar.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
         }
 
-        dropdownMenu.insertAdjacentHTML("afterbegin", 
-        `
-        <li class="dropdown mb-2">
-        <button type="button" class="btn btn-secondary w-100 m-0  pe-none text-light">
-        <i class="bi bi-coin h6"></i>
-        ${profile.credits}
-        </button>
-        </li>
-        `)
-
         listinfo(profile)
 
     } catch(error) {
@@ -61,7 +52,9 @@ async function getProfile (url) {
 getProfile(userURL);
 
 const listinfo = (profile) => {
-    //console.log (profile);
+    console.log (profile);
+
+    userHeading.innerHTML =  `${profile.name} listings (${profile.listings.length})`
 
     avatar.src = profile.avatar
         if(profile.avatar == ""){
@@ -69,40 +62,36 @@ const listinfo = (profile) => {
         }
 
         userInfo += `<div class="d-flex flex-column align-items-center text-center">
-        <img src="${avatar.src}" alt="${profile.name}" class="rounded-circle p-1 bg-primary" width="110">
+        <div class="container col-5 col-md-4 col-lg-8">
+        <img src="${avatar.src}" alt="${profile.name}" class="rounded-circle p-1 bg-primary">
+        </div>
         <div class="mt-3">
             <h4>${profile.name}</h4>
-            <p class="text-secondary mb-1">Number of auctions Won: ${profile.wins}</p>
-            <p class="text-muted font-size-sm">Number of listings: ${profile.listings}</p>
+            <p class="text-secondary mb-1">Number of auctions Won: ${profile.wins.length}</p>
+            <p class="text-muted font-size-sm">Number of listings: ${profile.listings.length}</p>
+            <hr class="my-4">
             <button class="btn btn-primary" id="updateAvatar" data-bs-toggle="modal" data-bs-target="#avatarModal">Update Avatar</button>
         </div>
-        </div>
-        <hr class="my-4">
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-            <h6 class="mb-0">Auctions Won:</h6>
-            <span class="text-secondary">${profile.wins}</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-            <h6 class="mb-0">Listings:</h6>
-            <span class="text-secondary">${profile.listings}</span>
-        </li>
-    </ul>`
+        </div>`
 
     profilecard.innerHTML = userInfo;
 
-    userListings += `<div class="col-sm-4">
+    for (const item of profile.listings){
+
+        console.log(item);
+
+    
+
+    userListings += `<div class="col-sm-6 p-2">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="d-flex align-items-center mb-3">${profile.listing}</h5>
-                                <p>Web Design</p>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                            <div class="card-body itemcard py-2">
+                                <h5 class="d-flex align-items-center mb-3">${item.title}</h5>
+                                <img src="${item.media[0]}" class="card-img-top ratio-1x1 profileListingImg" alt="${item.title}" />
                             </div>
+                            <a href="specific.html?id=${item.id}" class="btn btn-secondary text-light rounded-bottom stretched-link">View listing</a>
                         </div>
                     </div>`
-    
+    }
     appendDiv.insertAdjacentHTML("afterend", userListings);
 
 };

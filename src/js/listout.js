@@ -1,21 +1,29 @@
-const listOutURL = "https://api.noroff.dev/api/v1/auction/listings?limit=12?&_seller=true&_bids=true&sort=created&sortOrder=desc";
-const heroURL = "https://api.noroff.dev/api/v1/auction/listings?limit=4?&_seller=true&_bids=true?&sort=created&sortOrder=desc"
+const listOutURL = "https://api.noroff.dev/api/v1/auction/listings?_active=true&_seller=true&_bids=true&sort=created&sortOrder=desc";
+const frontpageURL = "https://api.noroff.dev/api/v1/auction/listings?limit=28&_active=true&_seller=true&_bids=true&sort=created&sortOrder=desc"
+
 
 const outDiv = document.querySelector("div#container")
-const heroImgs = document.querySelectorAll("img.product");
 
-const listImg = (items) => {
-    for (let img of items) {
-        console.log(img.media)
-        heroImgs.src.append(img.media)
-    }
+if (window.location.toString().includes("index")){
+    console.log("frontpage");
+    getPosts(frontpageURL);
 }
 
-const listPosts = (items) => {
+if (window.location.toString().includes("listings")){
+    console.log("listings");
+    getPosts(listOutURL);
+
+    const searchBar = document.querySelector("input#searchBar");
+    searchBar.addEventListener("keyup", filterPost);
+}
+
+const listEntries = (items) => {
     //console.log (items);
     outDiv.innerHTML = "";
     let newDivs = "";
     console.log(newDivs);
+    console.log(window.location)
+
     for (let item of items) {
 
         let expire = new Date(item.endsAt);
@@ -34,46 +42,45 @@ const listPosts = (items) => {
         //console.log(lastBid);
 
         if (lastBid == null) {
-            lastBid = "No bids yet";
+            lastBid = "0";
+            }
+
+        if (item._count.bids == 0) {
+            item._count.bids = "No bids yet";
             }
         //Replace img if not found
         if (item.media == "") {
-            item.media = "https://cdn.discordapp.com/attachments/931268688412299274/1026475050578231376/no-user-image-icon-0.jpg";
+            item.media = ["https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg"] ;
             }
 
+        //console.log(typeof item._count);
+
         newDivs += `<div class="col-6 col-lg-3 mb-4 pb-4 mb-lg-0">
-        <div class="card h-100 itemcard pb-2">
-          <img src="${item.media}"
+        <div class="card h-100 itemcard">
+          <img src="${item.media[0]}"
             class="card-img-top ratio-1x1" alt="${item.title}" />
           <div class="card-body">
             <div class="d-flex flex-column mb-3">
               <h5 class="mb-0">${item.title}</h5>
               <h6 class="text-dark mb-0">Price: ${lastBid}</h5>
             </div>
-            <div class="input-group mb-3 d-flex justify-content-between" data-visible="loggedIn">
-            <div class="col-6">
-            <input type="text" class="form-control col-2" id="${item.id}" placeholder="Place your bid" aria-label="Place your bid" aria-describedby="basic-addon2">
-            </div>
-            <div class="input-group-append">
-                <button class="btn bid btn-secondary text-light" id="${item.id}" type="button">Bid</button>
-            </div>
-            </div>
-            <div class="d-flex align-content-end flex-column mb-1">
+            <div class="d-flex align-content-end mt-auto flex-column mb-1">
               <p class="text-dark mb-0">Bids: ${item._count.bids}</p>
-              <p class="text-muted mb-0">Available: <span class="fw-bold">${formatedDate}</span></p>
+              <p class="text-muted small mb-0">Ends at: <span class="fw-bold">${formatedDate}</span></p>
             </div>
           </div>
+          <a href="specific.html?id=${item.id}" class="btn btn-secondary text-light rounded-bottom">View listing</a>
         </div>
       </div>`
     }
-    //console.log(newDivs);
+    
     outDiv.innerHTML = newDivs;
 
 };
 
-let allItems = [];
+let allEntries = [];
 
-export async function getPosts (url) {
+async function getPosts (url) {
     try {
         const accessToken = localStorage.getItem('accessToken'); 
         //console.log(accessToken)
@@ -90,14 +97,54 @@ export async function getPosts (url) {
         //console.log(response);
         const items = await response.json();
         console.log(items);
-        allItems = items;
-        listPosts(items, outDiv)
-        listImg(items)
+        listEntries(items, outDiv)
+        //listImg(items)        
+        allEntries = items;
+        heroImgs()
 
     } catch(error) {
         console.warn(error);
     }
 };
 
-getPosts(listOutURL);
-listPosts(allItems)
+console.log(allEntries);
+
+function heroImgs (url) { 
+
+    let randomEntry = [];
+
+    const entriesWithImg = allEntries.filter((t) => t.media[0] != ["https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg"]);
+    console.log(entriesWithImg);
+    console.log(allEntries);
+    
+    for(let i = 0; i < 6; i++) {
+        randomEntry.push(entriesWithImg[Math.floor(Math.random()*entriesWithImg.length)]);
+    }
+
+    let result = randomEntry.map(({id, media}) => ({id, media}));
+    let imgArray = result.map(subarray => subarray.media[0])
+    let idArray = result.map(subarray => subarray.id)
+    console.log(idArray);
+
+    Array.from(document.querySelectorAll("img.product")).forEach((img, index) => {
+        img.insertAdjacentHTML("afterend", `<a href="specific.html?id=${idArray[index]}" class="stretched-link"></a>`)
+        img.src = imgArray[index]
+      });
+
+    console.log(imgArray);
+}
+
+function filterPost () {
+    const filterQuery = searchBar.value;
+    console.log(filterQuery);
+
+    const filtered = allEntries.filter((post)=>{
+        const filteredTitle = post.title.toUpperCase().indexOf(filterQuery.toUpperCase().trim()) > -1;
+
+        return filteredTitle
+    })
+    listEntries(filtered);
+}
+
+//document.addEventListener("DOMContentLoaded", listImg);
+  
