@@ -11,6 +11,9 @@ let addField = document.querySelector("button#addInput")
 let submitBtn = document.querySelector("button#submitItem")
 let heading = document.querySelector("h2.heading")
 
+const titleVal = document.querySelector("#titleVal")
+const endsAtVal = document.querySelector("#endDateVal")
+
 const queryString = document.location.search;
 const searchParams = new URLSearchParams(queryString);
 const id = searchParams.get("id");
@@ -145,13 +148,18 @@ const updateRequest = {
     description,
     tags: result,
     media,
+    endsAt
 }
 
     if
     (event.target.id == 'submitItem'){
         event.preventDefault()
-        createEntry(listItemURL, listingRequest);
-        console.log(listingRequest);
+        validateTitle(title)
+        validateEndDate(endsAt)
+        if (validated == true){
+            createEntry(listItemURL, listingRequest);
+            console.log(listingRequest);
+        }
     }
 
     if
@@ -227,3 +235,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
         getSinglePost(listItemURL + "/" + id)
     }
 });
+
+let validated = true;
+
+function validateTitle(title) {
+        if (!title) { 
+            titleVal.innerHTML = "<p>Title missing</p>";
+            validated = false;
+    }
+    console.log(validated)
+  }
+
+function validateEndDate(endsAt) {
+    if (!endsAt) { 
+        endsAtVal.innerHTML = "<p>End date missing</p>";
+        validated = false;
+}
+console.log(validated)
+}

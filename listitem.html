@@ -102,6 +102,7 @@
                         <label for="title" class="form-label">Title</label>
                         <input type="title" class="form-control" id="InputTitle" aria-describedby="titleHelp">
                         <div id="titleHelp" class="form-text">What are you selling?</div>
+                        <small id="titleVal" style="color:red;" class="form-text text-alert"></small>
                     </div>
                     <div class="mb-4">
                         <label for="InputDescription" class="form-label">Description</label>
@@ -112,12 +113,14 @@
                         <label for="InputTags" class="form-label">Tags</label>
                         <input type="tags" class="form-control" id="InputTags" aria-describedby="tagsHelp">
                         <div id="tagsHelp" class="form-text">Add some tags to make your listing more easy to find.</div>
+                        
                     </div>
                     <div class="mb-4">
                         <label for="exampleInputMedia" class="form-label">Media</label>
                         <input type="media" class="form-control mb-2 mediaInput" aria-describedby="mediaHelp addInput">
                         <button class="btn btn-outline-secondary" type="button" id="addInput">Add More</button>
                         <div id="mediaHelp" class="form-text">Add a image url to your listing.</div>
+                        <small id="mediaVal" style="color:red;" class="form-text text-alert"></small>
                     </div>
                     <div class="mb-4 row">
                         <div class="col-4">
@@ -131,6 +134,7 @@
                             </select>
                         </div>
                         <div id="endDateHelp" class="form-text">When should your listing expire?</div>
+                        <small id="endDateVal" style="color:red;" class="form-text text-alert"></small>
                     </div>
                     <button class="btn btn-primary" id="submitItem">Submit</button>
                 </form>

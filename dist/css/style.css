@@ -1,5 +1,5 @@
+@charset "UTF-8";
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
 body {
   font-family: "Inter", sans-serif;
 }
@@ -43,6 +43,10 @@ body.logged-in [data-visible=loggedOut] {
 
 p.logo {
   font-family: "Staatliches", cursive;
+}
+
+p.whitespace {
+  white-space: pre-line;
 }
 
 h1, .h1, h2, .h2, h3, .h3 {

@@ -41,6 +41,10 @@ p.logo {
   font-family: "Staatliches", cursive;
 }
 
+p.whitespace {
+  white-space: pre-line;
+}
+
 h1, .h1, h2, .h2, h3, .h3 {
   font-family: "DM Serif Display", serif;
 }
