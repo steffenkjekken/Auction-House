@@ -16,7 +16,6 @@ export async function register (url, data) {
 
         if (response.ok){
             location.reload()
-            return true;
         }
 
         else if (!answer.ok) {
