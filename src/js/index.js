@@ -13,8 +13,6 @@ const regPasswordInput = document.querySelector("input#regPassword");
 const avatarInput = document.querySelector("input#Avatar");
 const feedbackModal = document.getElementById("regBody");
 
-const regBTN = document.getElementById("register");
-
 const nameAlert = document.querySelector("#nameHelp")
 const passwordAlert = document.querySelector("#passwordHelp")
 const emailAlert = document.querySelector("#emailHelp")
@@ -45,8 +43,10 @@ let successReg = `<div class="modal-content">
 </div>`
 
 
-regBTN.addEventListener("click", (event) => {
-  
+document.body.addEventListener("click", (event) => {
+    if
+    (event.target.id == 'register'){
+
     event.preventDefault();
     console.log("You've pressed submit...");
     const name = nameInput.value.trim();
@@ -73,7 +73,7 @@ regBTN.addEventListener("click", (event) => {
       register(BASE_URL+"auth/register", regData);
       }
     }
-);
+  });
 
 document.body.addEventListener("click", (event) => {
     if
