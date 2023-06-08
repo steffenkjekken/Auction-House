@@ -25,9 +25,6 @@ body.logged-in [data-visible=loggedOut] {
   margin: 0 !important;
 }
 
-.pattern {
-  
-}
 
 a.stretched-link {
   text-decoration: none;
@@ -37,7 +34,7 @@ a.stretched-link {
   background-color: #E15C56;
   opacity: 1;
   background-image:  radial-gradient(#e3e3e3 0.45px, transparent 0.45px), radial-gradient(#e3e3e3 0.45px, #E15C56 0.45px);
-  background-size: 18px 18px;
+  background-size: 19px 19px;
   background-position: 0 0,9px 9px;
 }
 
