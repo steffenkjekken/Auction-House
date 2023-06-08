@@ -13,10 +13,12 @@
 <script src="./src/js/init.js" defer></script>
 <script src="./src/js/index.js" type="module" defer></script>
 <script src="./src/js/listout.js" defer></script>
+<script src="./src/js/skeleton.js" defer></script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600&family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <body class="min-vh-100 d-flex flex-column">
+  <div class="pattern"></div>
     <nav class="navbar navbar-expand-md navbar-dark bg-primary" aria-label="Third navbar example">
         <div class="container">
           <a class="navbar-brand" href="index.html"><p class="logo display-6 nopadding">Auction House</p></a>
@@ -46,7 +48,7 @@
                   <li class="nav-item bg-white rounded d-block d-md-none">
                     <div class="container rounded-top py-3 d-flex bg-secondary flex-row justify-content-around">
                       <div class="d-flex flex-row">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="42" height="42" class="rounded-circle ml-5" id="avatarMobile">
+                        <img src="" alt="mdo" width="42" height="42" class="rounded-circle ml-5" id="avatarMobile">
                         <p class="h4 mt-2 mx-2 text-light user-select-none" id="usernameMobile"> ... </p>
                       </div>
                       <div class="mytokens">
@@ -73,7 +75,7 @@
                     <img src="" alt="" width="32" height="32" class="rounded-circle my-2" id="avatar">
                   </a>
                       <p class="h5 mt-3 text-white user-select-none" id="username"></p>
-                      <i class="bi text-dark mt-2 pr-3 p-2 bi-chevron-down h5"></i>
+                      <i class="bi text-light mt-2 pr-3 p-2 bi-chevron-down h5"></i>
                 </div>
                 <ul class="dropdown-menu dropdown-menu-end" id="profilemenu">
                   <li><a class="dropdown-item text-center" href="profile.html">Profile</a></li>
@@ -91,65 +93,53 @@
       </nav>
       <main>
         <div class="container">
-            <div class="container pt-4">
-                <div class="row nopadding">
-                  <div class="col-sm-6 rounded col-lg-3 col-12 bg-secondary nopadding h-100">
-                    <div class="col">
-                        <h1 class="my-2 px-2 text-white">Auction House</h1>
-                        <p class="my-4 text-break px-2 text-white whitespace">Welcome to the number #1 online auction site. Find everything you thought you didnt need, until now.
-
+            <div class="container-fluid d-flex flex-row pt-4">
+                  <div class="col-sm-6 col-lg-3 col-12 flex-grow-1 nopadding" id="mainbox">
+                        <h1 class="my-2 px-2 shadowme text-white">Auction House</h1>
+                        <p class="my-4 text-break px-2 text-white whitespace">Welcome to the number #1 online auction site. Find everything you thought you didnt need, until now
                           Or you can sell your old stuff that you dont need anymore.
                         </p>
-                    </div>
-                    <div class="row nopadding w-100">
-                      <div class="col-12 d-flex justify-content-center pt-4 bg-white">
-                        <a href="listings.html" class="text-decoration-none">
-                          <p class="logo display-4 text-secondary">BUY</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 px-0 d-none d-lg-block">
-                    <div class="col box">
-                        <img src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg" class="product">
-                    </div>
-                    <div class="col box d-none d-md-block">
-                        <img src="https://ps.w.org/kama-thumbnail/assets/icon-256x256.png?rev=1627018" class="product">
-                    </div>
                   </div>
                   <div class="col-sm-6 col-lg-3 col-12 px-0">
-                    <div class="col box">
-                        <div class="container h-100 pt-2 bg-primary text-light d-none d-sm-block">
-                            <h2>Looking for 
-                              anything specific ?</h2>
-                            <a href="listings.html" class="text-decoration-none">
-                            <p class="fst-italic fw-light whitespace text-light text-decoration-underline">Search on all our listings here</p>
-                            </a>
-                        </div>  
+                    <div class="col box d-none d-sm-block">
+                        <img src="https://ps.w.org/kama-thumbnail/assets/icon-256x256.png?rev=1627018" class="product">
                     </div>
                     <div class="col box d-none d-sm-block">
                         <img src="https://ps.w.org/kama-thumbnail/assets/icon-256x256.png?rev=1627018" class="product">
                     </div>
                   </div>
-                  <div class="col-3 px-0 d-none d-lg-block">
-                    <div class="col box">
+                  <div class="col-lg-3 px-0">
+                    <div class="col h-50 box">
+                        <div class="container LFAS h-100 pt-2 bg-white text-primary d-none d-lg-block">
+                            <h2>Looking for 
+                              anything specific?</h2>
+                            <a href="listings.html" class="text-decoration-none">
+                            <p class="fst-italic whitespace text-primary w-75 link-offset-3">Search on all our listings <span class="text-decoration-underline">here</span></p>
+                            </a>
+                        </div>  
+                    </div>
+                    <div class="col box d-none d-lg-block">
                         <img src="https://ps.w.org/kama-thumbnail/assets/icon-256x256.png?rev=1627018" class="product">
                     </div>
-                    <div class="col box">
-                        <div class="container h-100 pt-2 bg-secondary text-light">
-                            <h3>New User ?</h3>
-                            <p class="fst-italic fw-light whitespace">Upon registerring all 
+                  </div>
+                  <div class="col-3 px-0 d-none d-lg-block">
+                    <div class="col box d-none d-lg-block">
+                        <img src="https://ps.w.org/kama-thumbnail/assets/icon-256x256.png?rev=1627018" class="product">
+                    </div>
+                    <div class="col box h-50">
+                        <div class="container NU d-flex flex-grow-1 flex-column justify-content-center text-light">
+                            <h2>New User?</h2>
+                            <p class="whitespace">Upon registerring all 
                               new users recieve 1000 tokens 
                               to use for bidding.</p>
                         </div> 
                     </div>
                   </div>
-                </div>
               </div>
             <section style="background-color: #eee;">
                 <div class="container py-5">
                   <div class="row p-0 m-0">
-                    <div class="card mb-4 bg-secondary text-light">
+                    <div class="card mb-4 HNL text-light">
                       <div class="card-body">
                         <h2>Hot New listings</h2>
                       </div>

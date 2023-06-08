@@ -83,8 +83,15 @@ const listItem = (item) => {
 
         console.log(sellerInfo);
 
+        let lastbidText = ""
+
         if (lastBid == null) {
-            lastBid = "0";
+            lastBid = "No bids yet"
+            lastbidText = `<p class="lead py-2">${lastBid}</p>`;
+            }
+
+            else {
+                lastbidText = `<p class="lead py-2">Highest bid: $ ${lastBid}</p>`;
             }
             
         //Replace img if not found
@@ -108,13 +115,14 @@ const listItem = (item) => {
         newDivs += `
         ${user === item.seller.name ? editDelete :""}
     <div class="row flex-md-row flex-column align-items-center">
-        <h1 class="text-break d-md-none display-5 fw-bold mb-3">${item.title}</h1>
-        <div class="col-12 col-md-6 col-lg-6">
+        <h1 class="text-break d-md-none display-5 fw-bold">${item.title}</h1>
+        <div class="col-12 col-md-6 col-lg-6 mb-auto py-4">
             <img src="${item.media[0]}" class="d-block mx-lg-auto img-fluid specificImg" alt="${item.title}">
+            <hr class="divider">
         </div>
         <div class="col-12 col-md-6 mb-auto align-items-center">
             <h1 class="text-break d-none d-md-block display-5 fw-bold">${item.title}</h1>
-            <p class="lead py-2">Highest bid: $ ${lastBid}</p>
+            ${lastbidText}
             <p class="strong">${item.description}</p>
             ${tagBadges}
 
@@ -125,16 +133,18 @@ const listItem = (item) => {
             </div>
                     <button class="btn bid btn-secondary text-light mx-2 px-5 placeBid" id="${item.id}" type="button">Bid</button>
             </div>
-            <p class="small">Listing ends at: ${formatedDate}</p>
-            <div class="accordion-item col-12 col-md-6 py-2">
-                <button class="btn btn-outline-primary col-12 viewBids" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                View bids
-                </button>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionhExample">
-                    <div class="accordion-body col-12 mt-2">
-                        <ul class="list-group">
-                            ${bidInfo}
-                        </ul>
+            <p class="small text-muted">Listing ends at: ${formatedDate}</p>
+            <div class="accHeight my-4">
+                <div class="accordion-item col-12">
+                    <button class="btn btn-outline-primary col-12 viewBids" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    View bids
+                    </button>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionhExample">
+                        <div class="accordion-body align-items-start col-12 mt-2">
+                            <ul class="list-group">
+                                ${bidInfo}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -38,9 +38,10 @@ export async function getProfile (url) {
         avatar.src = profile.avatar
         if(profile.avatar == ""){
            avatar.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+           avatarmobile.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
         }
 
-        tokens.insertAdjacentHTML("beforeend", `<p class="h4 px-1"><i class="bi bi-coin h4"></i> ${profile.credits}</p>`)
+        tokens.insertAdjacentHTML("beforeend", `<p class="fs-4 px-0 mx-0"><i class="bi bi-coin h4"></i> ${profile.credits}</p>`)
 
         dropdownMenu.insertAdjacentHTML("afterbegin", 
         `
